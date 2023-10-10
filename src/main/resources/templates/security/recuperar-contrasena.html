@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body
+		{
+			background: url([[@{/img/FondoPan.jpeg}]]);
+			background-size: 100vw 100vh;
+			background-repeat: no-repeat;
+			margin: 0;
+			padding: 0;
+			font-family: Arial, Helvetica, sans-serif;
+			box-sizing: border-box;
+			text-decoration: none;
+		}
+
+		.container
+		{
+			width: 100%;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.form-content
+		{
+			width: 100%;
+			max-width: 450px;
+			background-color: transparent;
+			padding: 50px 60px 2px;
+			text-align: center;
+			border-radius: 25px;
+			height: 300px;
+		}
+
+		.form-content h1
+		{
+			font-size: 30px;
+			margin-bottom: 60px;
+			color: #000000;
+			position: relative;
+		}
+
+		.form-content h1::after
+		{
+			content: '';
+			width: 30px;
+			height: 4px;
+			border-radius: 3px;
+			background: rgb(189, 30, 45);
+			position: absolute;
+			bottom: -12px;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		.input-field
+		{
+			background-color: #ffffff;
+			margin: 15px 0;
+			border-radius: 3px;
+			display: flex;
+			align-items: center;
+			transition: max-height 05s;
+			overflow: hidden;
+		}
+
+		input
+		{
+			width: 100%;
+			background: transparent;
+			border: 0;
+			outline: none;
+			padding: 18px 15px;
+			color: #000000;
+		}
+
+		.input::placeholder
+		{
+			color: #FFFFFF;
+		}
+
+		.input-field i
+		{
+			margin-left: 15px;
+			color: rgb(189, 30, 45);
+		}
+
+		form p
+		{
+			color: #FFFFFF;
+			text-align: left;
+			font-size: 13px;
+		}
+
+		form p a
+		{
+			color: rgb(189, 30, 45);
+			margin-left: 5px;
+		}
+
+		.btn-field
+		{
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.btn-field button
+		{
+			flex-basis: 48%;
+			font-size: 16px;
+			background-color: rgb(189, 30, 45);
+			color: #FFFFFF;
+			height: 40px;
+			border-radius: 10px;
+			border: 0;
+			outline: 0;
+			cursor: pointer;
+			transition: background 1s;
+		}
+
+		.input-group
+		{
+			height: 100px;
+		}
+
+		.btn-field button.disable
+		{
+			background-color: #eaeaea;
+			color: #000000;
+		}
+
+		.btn-success
+		{
+	 	 background-color: rgb(189, 30, 45);
+	 	 border: 1px solid rgb(189, 30, 45);
+		}
+
+		.btn-success:hover 
+		{
+	  	background-color: rgb(189, 30, 45);
+	  	border: 1px solid rgb(189, 30, 45);
+		}
+  </style>
+</head>
+
+<title>Restablecer Contraseña</title>
+</head>
+<body>
+	<div class="container">
+    	<div class="form-content">
+        	<h1 class="title">Asignar/Recuperar Contraseña</h1>
+				<form th:action="@{/recuperar-contrasena}" method="post">
+					<div class="form-group">
+ 						<div class="input-field">
+							<i class="fa-solid fa-envelope"></i>
+							<label for="correo">Correo Electronico</label>
+							<input type="email" name="correo" id="correo">
+						</div>
+  			 			<div class="btn-field">
+                    		<button id="singUp" type="submit" class="btn-success" style="margin: 0 auto;">Enviar</button>
+                		</div>
+           		 </div>
+        	</form>
+    	</div>
+</div>
+	<script src="script.js"></script>
+</body>
+</html>

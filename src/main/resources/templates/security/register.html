@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Registro de Usuario</title>
+
+    <style>
+        body {
+            background: url([[@{/img/FondoPan.jpeg}]]);
+            background-size: 100vw 100vh;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+            background-color: rgba(255, 255, 255, 0.09);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 3px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 3px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #be1e2d;
+        }
+
+        .text-danger {
+            color: red;
+        }
+
+        .form-control {
+            border-color: #fd0000;
+        }
+
+        .menu-button {
+            padding: 10px 20px;
+            background-color: #bf1e2d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .cancelar {
+            padding: 10px 20px;
+            background-color: #bf1e2d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Registro de Usuario</h2>
+    <form th:action="@{/saveUsuario}" th:object="${usuario}" method="POST">
+        <!-- Nombre -->
+        <div class="form-group">
+            <label for="nombreUsuario">Nombre</label>
+            <input th:field="*{nombreUsuario}" type="text" class="form-control" id="nombreUsuario" style="border-color: #be1e2d"/>
+            <small class="text-danger" th:if="${#fields.hasErrors('nombreUsuario')}" th:errors="*{nombreUsuario}"></small>
+        </div>
+
+        <!-- Apellido -->
+        <div class="form-group">
+            <label for="apellidoUsuario">Apellido</label>
+            <input th:field="*{apellidoUsuario}" type="text" class="form-control" id="apellidoUsuario" style="border-color: #be1e2d"/>
+            <small class="text-danger" th:if="${#fields.hasErrors('apellidoUsuario')}" th:errors="*{apellidoUsuario}"></small>
+        </div>
+
+        <!-- Tipo de Identificación -->
+        <div class="form-group">
+            <label for="tipoIdentificacionUsuario">Tipo de Identificacion</label>
+            <select th:field="*{tipoIdentificacionUsuario}" class="form-control" id="tipoIdentificacionUsuario" style="border-color: #be1e2d">
+                <option value="CC">Cedula de ciudadania</option>
+                <option value="TI">Tarjeta de identidad</option>
+                <option value="CE">Cedula de extranjeria</option>
+                <option value="PP">Permiso de permanencia</option>
+                <option value="PPT">Permiso de permanencia Especial</option>
+            </select>
+            <small class="text-danger" th:if="${#fields.hasErrors('tipoIdentificacionUsuario')}" th:errors="*{tipoIdentificacionUsuario}"></small>
+        </div>
+
+        <!-- Numero de identificacion -->
+        <div class="form-group">
+            <label for="numeroIdentificacionUsuario">Numero de identificacion</label>
+            <input th:field="*{numeroIdentificacionUsuario}" type="number" class="form-control" id="numeroIdentificacionUsuario" style="border-color: #be1e2d"/>
+            <small class="text-danger" th:if="${#fields.hasErrors('numeroIdentificacionUsuario')}" th:errors="*{numeroIdentificacionUsuario}"></small>
+        </div>
+
+        <!-- Numero de celular -->
+        <div class="form-group">
+            <label for="numeroTell">Numero de celular</label>
+            <input th:field="*{numeroTell}" type="text" class="form-control" id="numeroTell" style="border-color: #be1e2d"/>
+            <small class="text-danger" th:if="${#fields.hasErrors('numeroTell')}" th:errors="*{numeroTell}"></small>
+        </div>
+
+        <!-- Direccion del usuario -->
+        <div class="form-group">
+            <label for="direccion">Direccion del usuario</label>
+            <input th:field="*{direccion}" type="text" class="form-control" id="direccion" style="border-color: #be1e2d"/>
+            <small class="text-danger" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></small>
+        </div>
+
+        <!-- Correo Electronico -->
+        <div class="form-group">
+            <label for="correo">Correo Electronico</label>
+            <input th:field="*{correo}" type="text" class="form-control" id="correo" style="border-color: #be1e2d"/>
+            <small class="text-danger" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></small>
+        </div>
+
+        <!-- Nombre de usuario -->
+        <div class="form-group">
+            <label for="username">Nombre de usuario</label>
+            <input th:field="*{username}" type="text" class="form-control" id="username" style="border-color: #be1e2d" />
+            <small class="text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></small>
+        </div>
+
+        <label>Rol</label>
+        <select th:field="*{rolesAsignados}" multiple="multiple" class="form-control" style="border-color: #be1e2d">
+            <option th:each="rol : ${usuario.rolesDisponibles}" th:value="${rol}" th:text="${rol}"></option>
+        </select>
+        <input type="hidden" name="activo" value="true">
+        <input type="submit" value="Registrar" class="menu-button">
+        <a href="/" class="cancelar">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>
